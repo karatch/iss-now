@@ -3,12 +3,11 @@ import requests
 
 app = FastAPI()
 
-URL = "http://api.open-notify.org"
-
 @app.get("/iss")
 async def get_crew():
+    api_url = "http://api.open-notify.org/iss-now.json"
     try:
-        response = requests.get("http://api.open-notify.org/iss-now.json")
+        response = requests.get(api_url)
         response.raise_for_status()
         print(response.text)
         return response.text
